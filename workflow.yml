@@ -1,0 +1,21 @@
+name: Repo visualiser
+  on:
+    push:
+      branches:
+        -main
+              
+  job:
+    build:
+      steps: 
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Repo Visualizer
+              uses: githubocto/repo-visualizer@0.9.1
+            - name: 'Upload Artifact'
+              uses: actions/upload-artifact@v4
+              with:
+                name: my-artifact
+                path: my_file.txt
+                retention-days: 5
+
+            
