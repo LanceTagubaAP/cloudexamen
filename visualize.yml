@@ -7,6 +7,7 @@ name: Repo visualiser
   job:
     build:
       steps: 
+      
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
@@ -16,13 +17,9 @@ name: Repo visualiser
             excluded_paths: "dist,node_modules"
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Repo Visualizer
-        uses: githubocto/repo-visualizer@0.9.1
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-            with:
-              name: diagram
-              path: my_file.txt
-              retention-days: 5
-
+      - name: Get artifact
+        uses: actions/download-artifact@v2
+          with:
+            name: "diagram"
+            path: "downloads"
             
